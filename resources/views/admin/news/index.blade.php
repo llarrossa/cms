@@ -15,7 +15,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Título</th>
-{{--                <th scope="col">Categoria</th>--}}
+                <th scope="col">Categoria</th>
                 <th scope="col">Data de publicação</th>
                 <th scope="col">Ações</th>
             </tr>
@@ -24,8 +24,9 @@
             @foreach($news as $item)
                 <tr>
                     <th class="align-middle" scope="row">{{ $item->id }}</th>
-                    <td class="align-middle">{{ $item->title }}</td>
-{{--                    <td class="align-middle">Categoria</td>--}}
+                    <td class="align-middle">{{ Str::limit($item->title, 50, '...') }}
+</td>
+                    <td class="align-middle">Categoria</td>
                     <td class="align-middle">{{ $item->created_at->format('d/m/Y à\s H\hi') }}</td>
                     <td class="align-middle">
                         <form action="{{ route('news.destroy', $item->id) }}" method="post">
